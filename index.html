@@ -2,34 +2,581 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Karaoke Flash - Cancionero</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karaoke Flash | Sólo conecta y Canta!</title>
+
+  <!-- Cargar fuente Barbatrick desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Barbatrick&display=swap" rel="stylesheet">
+
+  <style>
+/* Testimonios: Diseño horizontal */
+.testimonials-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+
+.testimonial-item {
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  max-width: 280px;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.testimonial-item:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.testimonial-img:hover {
+  transform: scale(1.03);
+}
+
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+.feature-title-box {
+  background-color: #00FFFF; /* Azul neón brillante */
+  color: #000;
+  padding: 8px 12px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.feature-title-box a {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.feature-title-box a:hover {
+  color: #fff;
+  background-color: #00BFFF;
+}
+
+.cta-text {
+  font-size: 0.9rem;
+  color: #FFD700;
+  margin-top: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      color: #000;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: #000;
+      color: #fff;
+      padding: 1rem 0;
+      text-align: left;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Arial', cursive;
+      font-size: 3rem;
+      color: #FFD700;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    /* Si prefieres usar una imagen de logo, descomenta esta línea y comenta el texto */
+    /*
+    .logo {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+    */
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #FFFF00;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x1080/000000/FFFFFF?text=Karaoke+Flash') no-repeat center center/cover;
+      color: #fff;
+      text-align: center;
+      padding: 5rem 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Arial', cursive;
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      color: #FFD700;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Secciones generales */
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      color: #FFD700;
+      margin-bottom: 1.5rem;
+    }
+
+ /* Características */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+ 
+    .feature-card {
+      background: #000;
+      color: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature-card h3 {
+  color: #00FFFF; /* Azul neón brillante */
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.feature-card h3 a {
+  color: #00FFFF; /* Mismo color que el h3 */
+  text-decoration: none; /* Sin subrayado */
+  font-weight: bold;
+}
+
+    /* Precios */
+    .price-table {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .price-box {
+      background: #000;
+      color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .price-box h3 {
+      color: #FFD700;
+      margin-bottom: 1rem;
+    }
+
+    .price-box .price {
+      font-size: 2.5rem;
+      color: #FFD700;
+      margin: 1rem 0;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #FFD700;
+      color: #000;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      margin-top: 1rem;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #FFFF00;
+    }
+
+    /* Destacado */
+    .highlight {
+      background: #000;
+      color: #FFD700;
+      padding: 1.5rem;
+      margin: 2rem auto;
+      border-radius: 10px;
+      font-weight: bold;
+      max-width: 900px;
+    }
+
+    /* Videos */
+    .videos-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .video-item {
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-item iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+    }
+
+    .video-item h3 {
+      color: #FFD700;
+      padding: 1rem;
+      margin: 0;
+    }
+
+    /* Contacto */
+    .contact-info {
+      margin: 1rem 0;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
+      background: #25D366;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 0.5rem;
+      font-weight: bold;
+    }
+
+    .email-btn {
+      display: inline-block;
+      background: #0077B5;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 0.5rem;
+      font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>🎤 Karaoke Flash - Cancionero</h1>
-  
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Buscar por canción, artista, género o letra..." autofocus>
-    <small>🔍 Escribe cualquier parte del título, artista, género o letra</small>
+
+  <!-- Header -->
+  <header>
+    <img src="logo-karaoke-flash.png" alt="Karaoke Flash Logo" class="logo" />
+
+    <!-- Opción 2: Imagen del logo (descomenta si usas imagen) -->
+    <!--
+    <img src="logo-karaoke-flash.png" alt="Karaoke Flash Logo" class="logo" />
+    -->
+
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#caracteristicas">Características</a></li>
+        <li><a href="#precios">Precios</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <h1>KARAOKE FLASH</h1>
+    <p>Sólo Conecta y canta!!. El único sistema que te brinda actualizaciones mensuales sin Costo!!.</p>
+  </section>
+
+  <!-- ¿Qué es? -->
+  <section>
+    <h2>¿Qué es Karaoke Flash?</h2>
+    <p><strong>Karaoke Flash</strong> es un sistema portátil de karaoke que funciona desde una USB sin necesidad de instalación. Solo conectas y listo.</p>
+    <p>Ideal para hogares, karaokes, bares, reuniones, eventos y negocios. ¡Canta con las canciones más nuevas, de tendencia y de la mejor calidad!</p>
+  </section>
+
+  <!-- Características -->
+  <section id="caracteristicas">
+    <h2>Características Especiales</h2>
+    <div class="features-grid">
+
+      <div class="feature-card">
+  <div class="feature-title-box">
+    <a href="https://go.glideapps.com/app/Qlsbrz5kuH7mQA6aKLpa/agent" target="_blank">Enlace Cancionero Digital</a>
   </div>
-
-  <div id="resultsInfo"></div>
-
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th>N°</th>
-          <th>TÍTULO</th>
-          <th>ARTISTA</th>
-          <th>GÉNERO</th>
-        </tr>
-      </thead>
-      <tbody id="songList"></tbody>
-    </table>
+  <p>Ingresa directamente al cancionero para buscar tus canciones por título, artista o género.</p>
+  <div class="cta-text"> Dale click ☝️ para abrir el cancionero interactivo</div>
+</div>
+      <div class="feature-card">
+  <div class="feature-title-box">
+    <a href="https://drive.google.com/file/d/1wCGqzWhNlqQS4h30fqT8b2OX7ZH62WOG/view?usp=sharing" target="_blank">Voz Guía (ALT + G) →</a>
   </div>
+  <p>Pasa a escuchar la canción original si necesitas practicar, afinar o aprender la letra.</p>
+  <div class="cta-text"> Dale click ☝️ para ver cómo funciona</div>
+</div>
+      <div class="feature-card">
+  <div class="feature-title-box">
+    <a href="https://drive.google.com/file/d/1Xb9yQn87yLZ85PfDiN_XdIRXZ6FpkAnE/view?usp=sharing" target="_blank">Ajuste de Tono →</a>
+  </div>
+  <p>Sube o baja el tono de la canción desde +5 a -5 semi tonos para adaptarlo a tu voz.</p>
+  <div class="cta-text"> Dale click ☝️ para ver cómo funciona</div>
+</div>
+      <div class="feature-card">
+  <div class="feature-title-box">
+    <a href="https://drive.google.com/file/d/1cXeB-eegmtCCkzrndLbIj9ayESy17dL8/view?usp=sharing" target="_blank">Lista de Espera (F4) →</a>
+  </div>
+  <p>Mantiene hasta 10 canciones en espera mientras canta un invitado.</p>
+  <div class="cta-text"> Dale click ☝️ para ver cómo funciona</div>
+</div>
+      <div class="feature-card">
+  <div class="feature-title-box">
+    <a href="https://drive.google.com/file/d/1XhBikgSfkqbgIv26uoZjIZxULUxeEyDD/view?usp=sharing" target="_blank">Calificación Divertida →</a>
+  </div>
+  <p>Al finalizar la canción el sistema emite una calificación, además aplausos o abucheos de acuerdo al desempeño del cantante.</p>
+  <div class="cta-text"> Dale click ☝️ para ver cómo funciona</div>
+</div>
+      <div class="feature-card">
+  <div class="feature-title-box">
+    <a href="https://drive.google.com/file/d/1Xm2eXhuwZgAsvFCBdX5JZpoXAheWvOn7/view?usp=sharing" target="_blank">Descarga de Pistas →</a>
+  </div>
+  <p>Descarga las PISTAS en MP3 calidad HD para tus presentaciones o llevalas a donde quieras.</p>
+  <div class="cta-text"> Dale click ☝️ para ver cómo funciona</div>
+</div>
+     <div class="feature-card">
+  <div class="feature-title-box">
+    <a href="https://drive.google.com/file/d/1Ib9GQq_Q2mbz74qiP9gX5mabgV-pNFk3/view?usp=sharing" target="_blank">Actualizaciones Mensuales →</a>
+  </div>
+  <p>Recibe actualizaciones con nuevas canciones cada mes, gratis o puedes pedir tus canciones favoritas.</p>
+  <div class="cta-text"> Dale click ☝️ para ver cómo funciona</div>
+</div>
+     <div class="feature-card">
+  <div class="feature-title-box">
+    <a href="https://drive.google.com/file/d/17icQ7FT8pXGPCUQJFAI5L11hAqHZlUtR/view?usp=sharing" target="_blank">Configuración Inicial Pantalla Negra →</a>
+  </div>
+  <p>Sólo la Primera vez que usas Karaoke Flash. Guía rápida para configurar los videos de fondo.</p>
+  <div class="cta-text">Dale click ☝️ para ver cómo funciona</div>
+</div>
+     <div class="feature-card">
+  <div class="feature-title-box">
+    <a href="https://drive.google.com/file/d/1AZN5sx7wr_DYowNBvfnb4zvRVF7K9lqu/view?usp=sharing" target="_blank">Karaoke en Modo Reproductor de Música →</a>
+  </div>
+  <p>Utiliza tu karaoke para escuchar música a modo de reproductor. Elige tus canciones favoritas y escucha la música que llena tu alma.</p>
+  <div class="cta-text">Dale click ☝️ para ver cómo funciona</div>
+</div>
+     <div class="feature-card">
+  <div class="feature-title-box">
+  </div>
+        <h3>Garantía y Soporte 24/7</h3>
+        <p>Acompañamiento y Soporte técnico siempre disponible. Garantía Real de 1 año del Sistema.</p>
+</div>
+     <div class="feature-card">
+  <div class="feature-title-box">
+  </div>
+        <h3>Personaliza tu Karaoke Flash</h3>
+        <p>Puedes cambiar fuentes, colores y añadir tus propios videos, agregar publicidad de tu negocio, etc.</p>
+</div>
+    </div>
+  </section>
 
-  <script src="app.js"></script>
+  <!-- Precios -->
+  <section id="precios">
+    <h2>Opciones de Compra</h2>
+    <div class="price-table">
+      <div class="price-box">
+        <h3>Instalación en PC</h3>
+        <p>Solo para tu equipo</p>
+        <div class="price">$15 USD</div>
+        <a href="https://wa.me/593983518473" class="btn">Comprar Ahora</a>
+      </div>
+      <div class="price-box">
+        <h3>Flash Portátil</h3>
+        <p>Usa en cualquier computador</p>
+        <div class="price">$25 USD</div>
+        <a href="https://wa.me/593983518473" class="btn">Comprar Ahora</a>
+      </div>
+    </div>
+  </section>
+<!-- Testimonios de Clientes -->
+<section id="testimonios">
+  <h2>💬 Lo que dicen nuestros clientes</h2>
+  <p>"Karaoke Flash no solo entretiene... ¡conquista!"</p>
+
+  <div class="testimonials-container">
+  <div class="testimonial-item">
+    <img src="testimonio1.jpg" alt="Testimonio 1 - WhatsApp" class="testimonial-img">
+  </div>
+  <div class="testimonial-item">
+    <img src="testimonio2.jpg" alt="Testimonio 2 - WhatsApp" class="testimonial-img">
+  </div>
+  <div class="testimonial-item">
+    <img src="testimonio3.jpg" alt="Testimonio 3 - WhatsApp" class="testimonial-img">
+  </div>
+</div>
+</section>
+
+  <!-- Actualizaciones -->
+  <section class="highlight">
+    <h2>¡ACTUALIZACIONES MENSUALES GRATIS!</h2>
+    <p>Recibe cada mes nuevas canciones de moda. Si te gusta una canción y no está en el repertorio, ¡pídela y la incluimos en la próxima actualización!</p>
+    <p>¡Tu karaoke siempre actualizado, fresco y a la carta!</p>
+  </section>
+
+    <!-- Videos -->
+  <section id="videos">
+    <h2>Videos de Tendencia</h2>
+    <p>Mira y escucha en Karaoke Flash esta cancion en tendencia.</p>
+    <div class="videos-container">
+      <div class="video-item">
+        <h3>Canciones de Tendencia - Mundial</h3>
+        <!-- AQUÍ ESTÁ EL CAMBIO -->
+        <iframe src="https://www.youtube.com/embed/QrmJGpj2URM" title="Video del Mundial - Karaoke Flash" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+<!-- Video Publicitario -->
+<section id="video-publicitario">
+  <h2>¡Descubre Karaoke Flash!</h2>
+  <p>Mira este video promocional para conocer todas las ventajas de nuestro sistema. ¡Diviértete cantando como nunca antes!</p>
+  <div class="video-container">
+    <div class="video-item">
+      <h3>Video Promocional Oficial</h3>
+      <iframe 
+        src="https://www.youtube.com/embed/N1MqHaDiIys?feature=share" 
+        title="Video Promocional Karaoke Flash" 
+        allowfullscreen
+        style="width: 100%; height: 400px; border: none;">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+  <!-- Instalación y Entrega -->
+  <section>
+    <h2>Instalación y Entrega</h2>
+    <p>Ofrecemos entrega a domicilio en Quito sin costo. Fuera del perimetro urbano, con costo adicional.</p>
+    <p>También realizamos instalaciones directas en tu computador, ya sea por visita o conexión remota (AnyDesk).</p>
+    <p>No se requiere de ninguna instalación. Tiempo de carga 30 min. aprox..</p>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <div class="contact-info">
+      <p>¿Tienes alguna duda o deseas comprar? ¡Contáctame!</p>
+      <a href="https://wa.me/593983518473" class="whatsapp-btn">💬 WhatsApp: 098 351 8473</a>
+      <a href="mailto:parodriguezt@gmail.com" class="email-btn">📧 Correo: parodriguezt@gmail.com</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Karaoke Flash. Todos los derechos reservados.</p>
+    <p>Garantía y soporte 24/7. Miles de sistemas vendidos y muy buenos testimonios.</p>
+  </footer>
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/593983518473" target="_blank" class="whatsapp-float" title="Contacto por WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png" alt="WhatsApp" width="50" height="50">
+</a>
+
+<style>
+  .whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    background-color: #128C7E;
+  }
+
+  /* Responsive: Ajusta en pantallas pequeñas */
+  @media (max-width: 480px) {
+    .whatsapp-float {
+      width: 50px;
+      height: 50px;
+      bottom: 20px;
+      right: 20px;
+      font-size: 26px;
+    }
+  }
+</style>
+
 </body>
 </html>
