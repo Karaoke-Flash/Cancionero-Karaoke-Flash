@@ -577,6 +577,33 @@
     }
   }
 </style>
+<!-- INICIO PRUEBA DICTADO POR VOZ -->
+<button id="btn-mic-prueba" style="position:fixed; bottom:90px; right:20px; width:60px; height:60px; border-radius:50%; background:#00d2ff; border:none; font-size:30px; box-shadow:0 4px 15px rgba(0,0,0,0.3); cursor:pointer; z-index:9999; display:flex; align-items:center; justify-content:center;">🎤</button>
 
+<script>
+document.getElementById('btn-mic-prueba').onclick = function() {
+    if (!('webkitSpeechRecognition' in window)) { alert('Tu navegador no soporta voz. Usa Chrome.'); return; }
+    var recognition = new webkitSpeechRecognition();
+    recognition.lang = 'es-ES';
+    recognition.start();
+    this.style.background = '#ff4444'; // Se pone rojo al grabar
+    
+    recognition.onresult = function(event) {
+        var texto = event.results[0][0].transcript;
+        // Busca el input del cancionero (ajusta el selector si es necesario)
+        var input = document.querySelector('input[type="text"], input[placeholder*="Buscar"], #buscador');
+        if(input) {
+            input.value = texto;
+            input.dispatchEvent(new Event('input')); // Simula que escribiste
+        }
+        document.getElementById('btn-mic-prueba').style.background = '#00d2ff'; // Vuelve a azul
+    };
+    
+    recognition.onerror = function() {
+        document.getElementById('btn-mic-prueba').style.background = '#00d2ff';
+    };
+};
+</script>
+<!-- FIN PRUEBA DICTADO POR VOZ -->
 </body>
 </html>
